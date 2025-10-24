@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class MainController extends Controller
 {
     public function __invoke()
     {
-        return view('test');
+        return view('main');
     }
 }
