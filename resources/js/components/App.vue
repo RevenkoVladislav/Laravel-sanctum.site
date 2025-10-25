@@ -1,11 +1,26 @@
 <script>
+
+
 export default {
-    name: "App"
+    name: "App",
 }
 </script>
 
 <template>
-11
+    <div>
+        <nav>
+            <router-link class="btn btn-primary"
+                         :to="{ name: 'app.get'}">Get
+            </router-link>
+            <router-link class="btn btn-primary"
+                         :to="{ name: 'app.login'}">Login
+            </router-link>
+            <router-link class="btn btn-primary"
+                         :to="{ name: 'app.registration'}">Registration
+            </router-link>
+        </nav>
+    </div>
+    <router-view/>
 </template>
 
 <style scoped>
