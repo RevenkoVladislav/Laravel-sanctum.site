@@ -8,7 +8,8 @@ export default {
 
     methods: {
         getData() {
-            axios.get('/api/get').then( response => {
+            axios.get('/api/get', { withCredentials: true })
+                .then( response => {
                 console.log(response);
             })
         }
