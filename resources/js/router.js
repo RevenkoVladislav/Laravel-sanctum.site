@@ -21,6 +21,11 @@ const routes = [
                 name: 'app.registration'
             },
             {
+              path: 'personal',
+              component: () => import('./components/Personal.vue'),
+              name: 'app.personal'
+            },
+            {
                 path: '/:pathMatch(.*)*',
                 component: () => import('./components/NotFound.vue'),
                 name: 'app.notFound',

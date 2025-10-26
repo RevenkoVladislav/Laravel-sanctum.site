@@ -12,9 +12,9 @@ export default {
     methods: {
         login() {
             axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('/login', { email: this.email, password: this.password })
+                axios.post('/login', { email: this.email, password: this.password, withCredentials: true })
                     .then(response => {
-                        console.log(response)
+                        this.$router.push({ name: 'app.personal' })
                     })
                     .catch(error => {
                         console.log(error.response)

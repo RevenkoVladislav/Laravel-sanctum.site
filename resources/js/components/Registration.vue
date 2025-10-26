@@ -19,7 +19,8 @@ export default {
                         name: this.name,
                         email: this.email,
                         password: this.password,
-                        password_confirmation: this.password_confirmation
+                        password_confirmation: this.password_confirmation,
+                        withCredentials: true
                     }).then(response => {
                         console.log(response)
                     }).catch(error => {

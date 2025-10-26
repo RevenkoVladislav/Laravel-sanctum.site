@@ -27,6 +27,9 @@ export default {
             <router-link class="btn btn-primary m-1"
                          :to="{ name: 'app.registration'}">Registration
             </router-link>
+            <router-link class="btn btn-success m-1"
+                         :to="{ name: 'app.personal'}">Personal
+            </router-link>
             <a href="#" @click.prevent="logout" class="btn btn-danger m-1">Logout</a>
         </nav>
     </div>
