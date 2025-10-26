@@ -22,7 +22,9 @@ export default {
                         password_confirmation: this.password_confirmation,
                         withCredentials: true
                     }).then(response => {
-                        console.log(response)
+                        localStorage.setItem('auth_token', 'auth')
+                        window.dispatchEvent(new Event('storage'))
+                        this.$router.push({ name: 'app.personal'})
                     }).catch(error => {
                         console.log(error.response)
                     })
