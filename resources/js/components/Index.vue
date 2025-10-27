@@ -1,11 +1,26 @@
 <script>
+import Dropzone from "dropzone";
 export default {
-    name: "Index"
+    name: "Index",
+
+    data() {
+        return {
+            dropzone: null
+        }
+    },
+
+    mounted() {
+        this.dropzone = new Dropzone({})
+    }
 }
 </script>
 
 <template>
-<div>index</div>
+    <div>
+        <button @click.prevent="" ref="dropzone">
+
+        </button>
+    </div>
 </template>
 
 <style scoped>
