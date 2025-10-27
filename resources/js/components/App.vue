@@ -46,6 +46,9 @@ export default {
 <template>
     <div class="row">
         <nav>
+            <router-link class="btn btn-info m-1"
+                         v-if="token" :to="{ name: 'app.index'}">Index
+            </router-link>
             <router-link class="btn btn-primary m-1"
                          :to="{ name: 'app.get'}">Get
             </router-link>

@@ -6,6 +6,11 @@ const routes = [
         path: '/',
         children: [
             {
+                path: 'index',
+                component: () => import('./components/Index.vue'),
+                name: 'app.index'
+            },
+            {
                 path: 'get',
                 component: () => import('./components/Get.vue'),
                 name: 'app.get'
@@ -21,9 +26,9 @@ const routes = [
                 name: 'app.registration'
             },
             {
-              path: 'personal',
-              component: () => import('./components/Personal.vue'),
-              name: 'app.personal'
+                path: 'personal',
+                component: () => import('./components/Personal.vue'),
+                name: 'app.personal'
             },
             {
                 path: '/:pathMatch(.*)*',
@@ -42,7 +47,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const token = localStorage.getItem('auth_token');
 
-    if(!token) {
+    if (!token) {
         if (to.name === 'app.login' || to.name === 'app.registration') {
             return next()
         } else {
@@ -52,7 +57,7 @@ router.beforeEach((to, from, next) => {
         }
     }
 
-    if(to.name === 'app.login' || to.name === 'app.registration' && token) {
+    if (to.name === 'app.login' || to.name === 'app.registration' && token) {
         return next({
             name: 'app.personal'
         })
