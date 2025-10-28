@@ -5,21 +5,33 @@ export default {
 
     data() {
         return {
-            dropzone: null
+            dropzone: null,
+            title: null,
         }
     },
 
     mounted() {
-        this.dropzone = new Dropzone({})
+        this.dropzone = new Dropzone(this.$refs.dropzone, {
+            url: "/file/post",
+            autoProgress: false,
+        })
+    },
+
+    methods: {
+        store() {
+            console.log(this.dropzone.getAcceptedFiles());
+        }
     }
 }
 </script>
 
 <template>
-    <div>
-        <button @click.prevent="" ref="dropzone">
-
-        </button>
+    <div class="w-25">
+        <input type="text" v-model="title" class="form-control mt-3 mb-3" placeholder="title">
+        <div ref="dropzone" class="btn mb-3 p-5 d-block text-center text-light btn-secondary">
+            Upload
+        </div>
+        <input @click.prevent="store" type="submit" class="btn btn-primary" value="add">
     </div>
 </template>
 
