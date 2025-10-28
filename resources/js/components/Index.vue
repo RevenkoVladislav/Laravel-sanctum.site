@@ -13,7 +13,7 @@ export default {
     mounted() {
         this.dropzone = new Dropzone(this.$refs.dropzone, {
             url: "/file/post",
-            autoProgress: false,
+            autoProcessQueue: false,
         })
     },
 
