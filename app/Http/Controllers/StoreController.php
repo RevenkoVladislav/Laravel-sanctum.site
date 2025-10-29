@@ -15,12 +15,12 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $images = $data['images'];
+        $images = $data['images'] ?? [];
         unset($data['images']);
 
-        $post = Post::firstOrCreate($data);
+        $post = Post::create($data);
         foreach ($images as $image){
-            $name = Hash::make(Carbon::now() . '_' . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
+            $name = md5(Carbon::now() . '_' . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filePath = Storage::disk('public')->put('/images', $image);
 
             Image::create([
