@@ -7,19 +7,25 @@ export default {
         return {
             dropzone: null,
             title: null,
+            images: null,
         }
     },
 
     mounted() {
         this.dropzone = new Dropzone(this.$refs.dropzone, {
-            url: "/file/post",
+            url: "/api/posts/store",
             autoProcessQueue: false,
         })
     },
 
     methods: {
         store() {
-            console.log(this.dropzone.getAcceptedFiles());
+            const images = new FormData()
+            const files = this.dropzone.getAcceptedFiles()
+            files.forEach(file => {
+                images.append('images[]', file)
+            })
+                axios.post('/api/posts/store', images)
         }
     }
 }
