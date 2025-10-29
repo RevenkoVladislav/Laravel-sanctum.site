@@ -47,7 +47,7 @@ export default {
     <div class="row">
         <nav>
             <router-link class="btn btn-info m-1"
-                         v-if="token" :to="{ name: 'app.index'}">Index
+                         v-if="token" :to="{ name: 'app.index'}">Upload image
             </router-link>
             <router-link class="btn btn-primary m-1"
                          :to="{ name: 'app.get'}">Get
