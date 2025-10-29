@@ -23,13 +23,23 @@ export default {
         store() {
             const data = new FormData()
             const files = this.dropzone.getAcceptedFiles()
+
             files.forEach(file => {
                 data.append('images[]', file)
                 this.dropzone.removeFile(file)
             })
+
             data.append('title', this.title)
             this.title = ''
+
                 axios.post('/api/posts/store', data)
+                    .then(response => {
+                        alert(`Пост ${response.data.post_title} создан ! Загружено файлов ${response.data.images_count}`)
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        alert('Ошибка загрузки')
+                    })
         }
     }
 }

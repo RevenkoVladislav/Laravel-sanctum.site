@@ -31,6 +31,11 @@ class StoreController extends Controller
             ]);
         }
 
-        return response(['status' => 'ok']);
+        return response()->json([
+            'status' => 'ok',
+            'post_id' => $post->id,
+            'post_title' => $post->title,
+            'images_count' => count($images),
+        ]);
     }
 }
