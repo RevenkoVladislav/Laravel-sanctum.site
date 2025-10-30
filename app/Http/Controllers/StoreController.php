@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 
 class StoreController extends Controller
 {
@@ -22,13 +23,18 @@ class StoreController extends Controller
         foreach ($images as $image){
             $name = md5(Carbon::now() . '_' . $image->getClientOriginalName()) . '.' . $image->getClientOriginalExtension();
             $filePath = Storage::disk('public')->put('/images', $image);
+            $previewName = 'prev_' . $name;
 
             Image::create([
                 'path' => $filePath,
-
                 'url' => url('/storage/' . $filePath),
                 'post_id' => $post->id
             ]);
+
+            ImageManager::gd()
+                ->read($image)
+                ->scale(100, 100)
+                ->save(public_path('/storage/images/' . $previewName));
         }
 
         return response()->json([
