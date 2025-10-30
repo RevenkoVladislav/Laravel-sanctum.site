@@ -9,18 +9,11 @@ export default {
     },
 
     mounted() {
-      this.getPosts()
+      this.getPost()
     },
 
     methods: {
-        // getData() {
-        //     axios.get('/api/posts/get', { withCredentials: true })
-        //         .then( response => {
-        //         console.log(response);
-        //     })
-        // }
-
-        getPosts() {
+        getPost() {
             axios.get('/api/posts/get')
                 .then(response => {
                     this.post = response.data.data;
