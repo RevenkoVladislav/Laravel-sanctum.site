@@ -28,6 +28,7 @@ export default {
     <div v-if="post">
         <h4>{{ post.title }}</h4>
         <div v-for="image in post.images" class="mb-3">
+            <img :src="image.preview_url" class="mb-3">
             <img :src="image.url">
         </div>
     </div>
