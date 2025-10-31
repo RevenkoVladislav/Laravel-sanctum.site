@@ -48,9 +48,20 @@ export default {
                     })
         },
 
-        handleImageAdded() {
-            console.log(111);
-        }
+        handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+            const formData = new FormData();
+            formData.append("image", file);
+
+            axios.post('api/posts/images/store', formData)
+                .then(result => {
+                    const url = result.data.url; // Get url from response
+                    Editor.insertEmbed(cursorLocation, "image", url);
+                    resetUploader();
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        },
     }
 }
 </script>

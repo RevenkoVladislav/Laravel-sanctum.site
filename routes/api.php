@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Http\Request;
@@ -10,6 +11,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('posts')->group(function () {
-   Route::post('/store', StoreController::class);
+    Route::post('/store', StoreController::class);
     Route::get('/get', IndexController::class);
+
+    Route::prefix('images')->group(function () {
+       Route::post('/store', ImageController::class);
+    });
 })->middleware('auth:sanctum');
