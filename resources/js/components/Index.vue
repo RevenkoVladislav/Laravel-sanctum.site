@@ -1,5 +1,6 @@
 <script>
 import Dropzone from "dropzone";
+import { VueEditor } from "vue3-editor"
 export default {
     name: "Index",
 
@@ -8,7 +9,12 @@ export default {
             dropzone: null,
             title: null,
             images: null,
+            content: null
         }
+    },
+
+    components: {
+      VueEditor
     },
 
     mounted() {
@@ -40,6 +46,10 @@ export default {
                         console.log(error)
                         alert('Ошибка загрузки')
                     })
+        },
+
+        handleImageAdded() {
+            console.log(111);
         }
     }
 }
@@ -50,6 +60,9 @@ export default {
         <input type="text" v-model="title" class="form-control mt-3 mb-3" placeholder="title">
         <div ref="dropzone" class="btn mb-3 p-5 d-block text-center text-light btn-secondary">
             Upload
+        </div>
+        <div class="mb-3">
+            <vue-editor useCustomImageHandler @image-added="handleImageAdded" v-model="content" />
         </div>
         <input @click.prevent="store" type="submit" class="btn btn-primary" value="add">
     </div>
