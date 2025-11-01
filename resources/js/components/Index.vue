@@ -36,7 +36,10 @@ export default {
             })
 
             data.append('title', this.title)
+            data.append('content', this.content)
+
             this.title = ''
+            this.content = ''
 
                 axios.post('/api/posts/store', data)
                     .then(response => {
