@@ -82,6 +82,9 @@ export default {
     </div>
 </template>
 
-<style scoped>
-
+<style>
+.dz-success-mark,
+.dz-error-mark {
+    display: none !important;
+}
 </style>
