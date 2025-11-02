@@ -3,6 +3,7 @@
 use App\Http\Controllers\Image\ImageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\UpdateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,7 @@ Route::get('/user', function (Request $request) {
 Route::prefix('posts')->group(function () {
     Route::post('/store', StoreController::class);
     Route::get('/get', IndexController::class);
+    Route::patch('/{post}', UpdateController::class);
 
     Route::prefix('images')->group(function () {
        Route::post('/store', ImageController::class);

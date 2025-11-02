@@ -43,7 +43,7 @@ export default {
 
                 axios.post('/api/posts/store', data)
                     .then(response => {
-                        alert(`Пост ${response.data.post_title} создан ! Загружено файлов ${response.data.images_count}`)
+                        alert(`Пост ${response.data.post_title} создан !`)
                     })
                     .catch(error => {
                         console.log(error)

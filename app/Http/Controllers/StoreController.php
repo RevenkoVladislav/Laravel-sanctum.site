@@ -42,7 +42,6 @@ class StoreController extends Controller
             'status' => 'ok',
             'post_id' => $post->id,
             'post_title' => $post->title,
-            'images_count' => count($images),
         ]);
     }
 }
